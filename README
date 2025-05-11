@@ -1,5 +1,3 @@
-La rularea pe laptopul propriu 65/100 teste + 13/20 valgrind
-
 Pentru implementarea temei am folosit urmatoarele:
 In int main am declarate fisierele din care voi citi si scrie caracterele, banda propriu-zisa, coada de intructiuni, initial fiind NULL, 
 numarul si instructiunile ce fac modificarile respective asupra benzii. Aloc memorie pentru char *instr fiindca aici citesc intructiunile
