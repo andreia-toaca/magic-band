@@ -1,0 +1,55 @@
+La rularea pe laptopul propriu 65/100 teste + 13/20 valgrind
+
+Pentru implementarea temei am folosit urmatoarele:
+In int main am declarate fisierele din care voi citi si scrie caracterele, banda propriu-zisa, coada de intructiuni, initial fiind NULL, 
+numarul si instructiunile ce fac modificarile respective asupra benzii. Aloc memorie pentru char *instr fiindca aici citesc intructiunile
+si le salvez atribund un indentificator.
+In for citim instructiunile cu id-ul pe care l-am atribuit:
+0 - MOVE_LEFT
+1 - MOVE_RIGHT
+2 - MOVE_LEFT_CHAR
+3 - MOVE_RIGHT_CHAR
+4 - WRITE
+5 - INSERT_LEFT
+6 - INSERT_RIGHT
+
+Banda InitBanda - functia care initializeaza banda, aloc o celula pentru structura benzii, pentru santinela apoi punem caracterul # 
+conform enuntului temei.
+
+Tlista createCelula - aloca memorie pentru o celula si pune in ea caracterul trimis, zero fiind pentru santinela.
+
+void move_right - verific daca sunt pe ultima pozitie din lista si daca da, atunci creez o noua celula cu legaturile necesare stabilite 
+in care scriu caracterul #. In caz contrar deplasez degetul la dreapta.
+
+void move_left - verific daca sunt pe prima celula din lista si respectiv nu deplasez degetul, daca nu, schimb pozitia curenta la stanga
+
+void move_right_char - parcurg lista, aux fiind pozitia curenta, in cazul in care aux diferit de x, creez o celula cu toate legaturile
+in care scriu #, daca nu, schimb pe pozitia care a gasit x.
+
+void move_left_char - parcurg lista, aux fiind pozitia curenta, iar for-ul se executa atat timp cat nu intalnesc caracterul x, sau 
+pana cand nu mai exista celule inafara de santinela. In font pozitia curenta devine aux fiindca s-a gasit caracterul necesar, in caz contrar
+afiseaza eroare.
+
+void insert_left - verifica daca sunt pe prima pozitie si afiseaza ERROR, daca nu creez o celula noua cu caracterul x, face toate legaturile
+ca aceasta celula sa se afle in fata pozitiei curente apoi pozitia curenta devine celula creata.
+
+void insert_right - creeaza o celula cu valoarea x in ea, facand toata legataruile ca celula se sa afle dupa pozitia curenta, pozitia curenta 
+fiind celula creata 
+
+void write - scrie caracterul x in celula respectiva
+
+void show_current - afiseaza cu fprintf caracterul de pe pozitia curenta a degetului.
+
+void show - cu un for parcurg banda, aux initial fiind pe prima celula a benzei. Daca aux este diferit de pozitia curenta afisez doar caracterul,
+daca este egal afisez cu bare, pozitia degetului.
+
+void freeBanda - eliberez memoria alocata.
+
+void addInstruction - adauga instruciuni in coada ca move_left, move_right. Daca coada este nula creez o singura celula unde precendenta si 
+urmatoarea pointeaza la ea. In caz contrar adaug celule la cele existente, aloc memorie si stabilesc legaturile necesare. In char x pastram 
+caracterul pe care il scrim.
+
+void execute - executa comezile scoate  din coada cu functia void extractInstruction. Instructions, identificator si x sunt pointeri si resepctiv 
+le atribuim valoarea care este in coada. Verificam daca coada are o singura celula, daca nu, se stabileste legaturile dintre celule. Extragem 
+instructiunile avand identificator si x - caracterul pe care il scrim.
+
